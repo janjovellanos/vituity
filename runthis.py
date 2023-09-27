@@ -73,8 +73,7 @@ orm_data_df.to_csv(f'{output_dir}/{orm_modified_filename}', index=False)
 
 #--------------------------------- CREATE A REPORT FILE.TXT, THAT LISTS TOTAL BILL AMOUNT BY STATE ---------------------------------#
 
-
-# Create a report file in txt that lists the total bill amount for each state
+# Create a report file that lists the total bill amount for each state
 state_total_bill = sample_data_df.groupby('patient_state')['bill_amount'].sum().reset_index()
 state_total_bill.to_csv(f'{output_dir}/state_total_bill.txt', sep='\t', index=False)
 
