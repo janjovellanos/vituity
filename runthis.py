@@ -40,7 +40,7 @@ oru_modified_filename = f"ORU_{current_date}_Modified_file.csv"
 orm_modified_filename = f"ORM_{current_date}_Modified_file.csv"
 
 # Create dataframe for sample data
-sample_data_df = pd.read_csv(os.path.join(input_dir, 'sampledata.csv'))
+sample_data_df = pd.read_csv(f'{input_dir}/sampledata.csv')
 
 # Create separate dataframes based on the message types i.e. ADT, ORU, ORM
 adt_data_df = sample_data_df[sample_data_df['message_type'].str[:3] == 'ADT']
@@ -48,8 +48,8 @@ oru_data_df = sample_data_df[sample_data_df['message_type'].str[:3] == 'ORU']
 orm_data_df = sample_data_df[sample_data_df['message_type'].str[:3] == 'ORM']
 
 # Extract data from the txt files
-adt_message = open('./Archive/Original/ADT_sample.txt', 'r').readlines()
-oru_message = open('./Archive/Original/Sample ORU.txt', 'r').readlines()
+adt_message = open(f'{input_dir}/ADT_sample.txt', 'r').readlines()
+oru_message = open(f'{input_dir}/Sample ORU.txt', 'r').readlines()
 
 # Append data to appropriate dataframes using custom 'message_parser' function
 adt_data_df = pd.concat([adt_data_df, pd.DataFrame(message_parser(adt_message))], ignore_index=True)
@@ -59,8 +59,8 @@ oru_data_df = pd.concat([oru_data_df, pd.DataFrame(message_parser(oru_message))]
 # oru_data_df.map(lambda x: int(x) if pd.notna(x) and isinstance(x, int) else x)
 
 # Manipulate incoming patient data as requested i.e. service date, full name
-adt_data_df['date_of_service'] = current_date
-oru_data_df['date_of_service'] = current_date
+adt_data_df['date_of_service'] = str(current_date)
+oru_data_df['date_of_service'] = str(current_date)
 adt_data_df['patient_name'] = adt_data_df['patient_last_name'] + ', ' + adt_data_df['patient_first_name'] + ' ' + adt_data_df['patient_middle_name']
 oru_data_df['patient_name'] = oru_data_df['patient_last_name'] + ', ' + oru_data_df['patient_first_name'] + ' ' + oru_data_df['patient_middle_name']
 
