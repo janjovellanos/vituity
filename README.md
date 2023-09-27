@@ -18,6 +18,8 @@ To run this project, you need:
 
 -   Python (version 3.6.9+)
 -   Pandas (install via `pip install pandas`)
+-   SQLite3 (included with Python)
+-   sampledata.csv, ADT_sample.txt, Sample ORU.txt files located on your Desktop
 
 ## Instructions
 

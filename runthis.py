@@ -25,7 +25,7 @@ files_to_copy = [csv_file, adt_file, oru_file]
 for file in files_to_copy:
     shutil.copy(file, destination_directory)
 
-#--------------------------------- CREATE NEW MODIFIED FILES IN /Archive/Modified ---------------------------------#
+#--------------------------------- WRITE OUTPUT TO MODIFIED FILES IN /Archive/Modified ---------------------------------#
 
 # Define input and output directories
 input_dir = './Archive/Original'
@@ -58,7 +58,7 @@ oru_data_df = pd.concat([oru_data_df, pd.DataFrame(message_parser(oru_message))]
 # adt_data_df.map(lambda x: int(x) if pd.notna(x) and isinstance(x, int) else x)
 # oru_data_df.map(lambda x: int(x) if pd.notna(x) and isinstance(x, int) else x)
 
-# Add new columns as requested i.e. service date, full name
+# Manipulate incoming patient data as requested i.e. service date, full name
 adt_data_df['date_of_service'] = current_date
 oru_data_df['date_of_service'] = current_date
 adt_data_df['patient_name'] = adt_data_df['patient_last_name'] + ', ' + adt_data_df['patient_first_name'] + ' ' + adt_data_df['patient_middle_name']
@@ -69,10 +69,10 @@ adt_data_df.to_csv(f'{output_dir}/{adt_modified_filename}', index=False)
 oru_data_df.to_csv(f'{output_dir}/{oru_modified_filename}', index=False)
 orm_data_df.to_csv(f'{output_dir}/{orm_modified_filename}', index=False)
 
-# If we want to drop first, last, middle name columns, use following example -->
+##### If we want to drop first, last, middle name columns, use following example --> #####
 # *_data_df = *_data_df.drop(columns = ['patient_first_name', 'patient_last_name', 'patient_middle_name'])
 
-#--------------------------------- CREATE A REPORT FILE.TXT, THAT LISTS TOTAL BILL AMOUNT BY STATE ---------------------------------#
+#--------------------------------- CREATE A BILLING REPORT FILE.TXT ---------------------------------#
 
 # Create a report file that lists the total bill amount for each state
 state_total_bill = sample_data_df.groupby('patient_state')['bill_amount'].sum().reset_index()
@@ -87,14 +87,14 @@ state_total_bill.to_csv(f'{output_dir}/state_total_bill.txt', index=False)
 
 #--------------------------------- BONUS: IMPLEMENT SQLite ---------------------------------#
 
-# Load data file
+# Load adt data file
 df = pd.read_csv(f'{output_dir}/{adt_modified_filename}')
 
 # Clean Data
 df.columns = df.columns.str.strip()
 
 # Create/connect SQLite database
-conn = sqlite3.connect('demo.db')
+conn = sqlite3.connect('adt_patients.db')
 
 # Load data to SQLite
 df.to_sql('adt_patients', conn, if_exists='replace')
