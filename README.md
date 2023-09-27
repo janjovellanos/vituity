@@ -47,7 +47,7 @@ The modified CSV files, report, and other outputs will be generated in the Archi
 
 Copying Files: The original data files have been copied to the Archive/Original directory.
 
-Creating Modified Files: New CSV files, such as `ADT\_(TodaysDate)\_Modified_file.csv` and `ORU\_(TodaysDate)\_Modified_file.csv`, have been generated in the Archive/Modified directory.
+Creating Modified Files: New CSV files, such as `ADT_(TodaysDate)_Modified_file.csv` and `ORU_(TodaysDate)_Modified_file.csv`, have been generated in the Archive/Modified directory.
 
 Data Manipulation: Patient data has been extracted from text files and appended to the appropriate dataframes. Additional columns, such as date_of_service and patient_name, have been added as requested.
 
