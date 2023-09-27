@@ -15,8 +15,17 @@ csv_file = os.path.join(source_directory, 'sampledata.csv')
 adt_file = os.path.join(source_directory, 'ADT_sample.txt')
 oru_file = os.path.join(source_directory, 'Sample ORU.txt')
 
+# Check if the directory already exists
+if not os.path.exists('Archive/Original'):
+    # If it doesn't exist, create the directory
+    os.makedirs('Archive/Original')
+    # Check if the directory already exists
+if not os.path.exists('Archive/Modified'):
+    # If it doesn't exist, create the directory
+    os.makedirs('Archive/Modified')
+
 # Destination for copies
-destination_directory = os.path.join(source_directory, 'vituity_take_home', 'Archive', 'Original')
+destination_directory = os.path.join(source_directory, 'vituity-main', 'Archive', 'Original')
 
 # Files to copy
 files_to_copy = [csv_file, adt_file, oru_file]
