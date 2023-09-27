@@ -54,15 +54,15 @@ sample_data_df = pd.read_csv(os.path.join(input_dir, 'sampledata.csv'))
 # orm_sample_data_df = sample_data_df[sample_data_df['message_type'].str[:3] == 'ORM']
 
 # Step 2: Extract information from the txt files
-adt_txt = open('./Archive/Original/ADT_sample.txt', 'r')
-oru_txt = open('./Archive/Original/Sample ORU.txt', 'r')
-adt_message = adt_txt.readlines()
-oru_message = oru_txt.readlines()
+adt_message = open('./Archive/Original/ADT_sample.txt', 'r').readlines()
+oru_message = open('./Archive/Original/Sample ORU.txt', 'r').readlines()
+combined_df = sample_data_df.copy()
 
 # Loop through the lines of the TXT file and extract relevant information
 def parseMessage(message):
     # bill_amount = 1234
     data = {'#': sample_data_df['#'].max() + 1}
+    data = {}
     for segment in message:
         if segment.startswith('MSH|'):
             data['message_type'] = segment.split('|')[8].replace('^', '-')
@@ -78,16 +78,20 @@ def parseMessage(message):
 
 # Step 4: Append the dictionary as a new row to the DataFrame
 for message in [adt_message, oru_message]:
-    updated_df = pd.concat([sample_data_df, pd.DataFrame(parseMessage(message))], ignore_index=True)
-    updated_df.to_csv('./Archive/Original/sampledata.csv', index=False)
-
+    # print(adt_message)
+    message_df = pd.DataFrame(parseMessage(message))
+    combined_df = pd.concat([combined_df, message_df], ignore_index=True)
+    combined_df.to_csv('./Archive/Original/sampledata.csv', index=False)
 
 # updated_df = pd.concat([sample_data_df, pd.DataFrame(parseMessage(oru_message))], ignore_index=True)
 # updated_df.to_csv('./Archive/Original/sampledata.csv', index=False)
 
 # # Step 5: Write the updated DataFrame back to the CSV file
-updated_df.to_csv('./Archive/Original/sampledata.csv', index=False)
-updated_df.to_csv('./Archive/Original/sampledata.csv', index=False)
+# updated_df.to_csv('./Archive/Original/sampledata.csv', index=False)
+# updated_df.to_csv('./Archive/Original/sampledata.csv', index=False)
+
+updated_sample_data_df = pd.read_csv(os.path.join(input_dir, 'sampledata.csv'))
+
 
 # Get today's date
 current_date = date.today()
@@ -103,17 +107,17 @@ orm_modified_filename = f"ORM_{current_date}_Modified_file.csv"
 # oru_sample_df = pd.read_csv(os.path.join(input_dir, 'Sample ORU.txt'), sep='|')
 
 # Set bill_amount for patients
-sample_data_df['bill_amount'] = 1234
+updated_sample_data_df['bill_amount'] = 1234
 
 # Extract the first 3 characters of 'message_type' into a new column 'message_type_prefix'
 # sample_data_df['message_type_prefix'] = sample_data_df['message_type'].str[:3]
 
 # Create separate dataframes based on the message type prefixes i.e. ADT, ORU, ORM
-adt_sample_data_df = sample_data_df[sample_data_df['message_type'].str[:3] == 'ADT']
-oru_sample_data_df = sample_data_df[sample_data_df['message_type'].str[:3] == 'ORU']
-orm_sample_data_df = sample_data_df[sample_data_df['message_type'].str[:3] == 'ORM']
+adt_sample_data_df = updated_sample_data_df[updated_sample_data_df['message_type'].str[:3] == 'ADT']
+oru_sample_data_df = updated_sample_data_df[updated_sample_data_df['message_type'].str[:3] == 'ORU']
+orm_sample_data_df = updated_sample_data_df[updated_sample_data_df['message_type'].str[:3] == 'ORM']
 
-print(sample_data_df)
+# print(sample_data_df)
 
 # Perform the required data manipulations
 # For example, if you want to add a new column 'date_of_service' with today's date:
