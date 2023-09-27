@@ -2,6 +2,7 @@ import shutil
 import os
 from datetime import date
 import pandas as pd
+import sqlite3
 from utils.helpers import message_parser
 
 #--------------------------------- COPY ALL FILES INTO /Archive/Original ---------------------------------#
@@ -83,3 +84,20 @@ total_row = pd.DataFrame({'patient_state': ['TOTAL'], 'bill_amount': [total_sum]
 state_total_bill = pd.concat([state_total_bill, total_row], ignore_index=True)
 
 state_total_bill.to_csv(f'{output_dir}/state_total_bill.txt', index=False)
+
+#--------------------------------- BONUS: IMPLEMENT SQLite ---------------------------------#
+
+# Load data file
+df = pd.read_csv(f'{output_dir}/{adt_modified_filename}')
+
+# Clean Data
+df.columns = df.columns.str.strip()
+
+# Create/connect SQLite database
+conn = sqlite3.connect('demo.db')
+
+# Load data to SQLite
+df.to_sql('adt_patients', conn, if_exists='replace')
+
+# Close connection
+conn.close()
