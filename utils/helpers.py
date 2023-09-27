@@ -1,7 +1,14 @@
-def parseMessage(message):
-    # bill_amount = 1234
+import random
+
+# Parses incoming list of lines from .txt file
+def message_parser(message):
     # data = {'#': sample_data_df['#'].max() + 1}
-    data = {}
+    # Preset bill amount
+    data = {
+        'bill_amount': 1234,
+        '#': random.randint(100,999)
+    }
+    # Loop through list and extract required fields
     for segment in message:
         if segment.startswith('MSH|'):
             data['message_type'] = segment.split('|')[8].replace('^', '-')

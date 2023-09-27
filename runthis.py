@@ -2,7 +2,7 @@ import shutil
 import os
 from datetime import date
 import pandas as pd
-from utils.helpers import parseMessage
+from utils.helpers import message_parser
 
 #--------------------------------- COPY ALL FILES INTO /Archive/Original ---------------------------------#
 
@@ -38,96 +38,49 @@ adt_modified_filename = f"ADT_{current_date}_Modified_file.csv"
 oru_modified_filename = f"ORU_{current_date}_Modified_file.csv"
 orm_modified_filename = f"ORM_{current_date}_Modified_file.csv"
 
-# Read the input csv files
+# Create dataframe for sample data
 sample_data_df = pd.read_csv(os.path.join(input_dir, 'sampledata.csv'))
-# # adt_sample_df = pd.read_csv(os.path.join(input_dir, 'ADT_sample.txt'), sep='|')
-# # oru_sample_df = pd.read_csv(os.path.join(input_dir, 'Sample ORU.txt'), sep='|')
 
-# Set bill_amount for patients
-# sample_data_df['date_of_service'] = current_date
-
-
-# Create separate dataframes based on the message type prefixes i.e. ADT, ORU, ORM
+# Create separate dataframes based on the message types i.e. ADT, ORU, ORM
 adt_data_df = sample_data_df[sample_data_df['message_type'].str[:3] == 'ADT']
 oru_data_df = sample_data_df[sample_data_df['message_type'].str[:3] == 'ORU']
 orm_data_df = sample_data_df[sample_data_df['message_type'].str[:3] == 'ORM']
 
-# Write the modified data to the output CSV files
-# adt_data_df.to_csv(os.path.join(output_dir, adt_modified_filename), index=False)
-# oru_data_df.to_csv(os.path.join(output_dir, oru_modified_filename), index=False)
-# orm_data_df.to_csv(os.path.join(output_dir, orm_modified_filename), index=False)
-
-# Step 2: Extract information from the txt files
+# Extract data from the txt files
 adt_message = open('./Archive/Original/ADT_sample.txt', 'r').readlines()
 oru_message = open('./Archive/Original/Sample ORU.txt', 'r').readlines()
-# update_adt_df = adt_data_df.copy()
-# update_oru_df = oru_data_df.copy()
 
-# Loop through the lines of the TXT file and extract relevant information
-# def parseMessage(message):
-#     # bill_amount = 1234
-#     # data = {'#': sample_data_df['#'].max() + 1}
-#     data = {}
-#     for segment in message:
-#         if segment.startswith('MSH|'):
-#             data['message_type'] = segment.split('|')[8].replace('^', '-')
-#         elif segment.startswith('PID|'):
-#             fields = segment.split('|')
-#             data['patient_first_name'] = fields[5].split('^')[1]
-#             data['patient_last_name'] = fields[5].split('^')[0]
-#             data['patient_middle_name'] = fields[5].split('^')[2]
-#             data['patient_address_1'] = fields[11].split('^')[0]
-#             data['patient_state'] = fields[11].split('^')[3]
-#             data['account_number'] = fields[3]
-#     return [data]
+# Append data to appropriate dataframes using custom 'message_parser' function
+adt_data_df = pd.concat([adt_data_df, pd.DataFrame(message_parser(adt_message))], ignore_index=True)
+oru_data_df = pd.concat([oru_data_df, pd.DataFrame(message_parser(oru_message))], ignore_index=True)
 
-adt_data_df = pd.concat([adt_data_df, pd.DataFrame(parseMessage(adt_message))], ignore_index=True)
-oru_data_df = pd.concat([oru_data_df, pd.DataFrame(parseMessage(oru_message))], ignore_index=True)
-adt_data_df.to_csv(f'./Archive/Modified/{adt_modified_filename}')
-oru_data_df.to_csv(f'./Archive/Modified/{oru_modified_filename}')
+# adt_data_df.map(lambda x: int(x) if pd.notna(x) and isinstance(x, int) else x)
+# oru_data_df.map(lambda x: int(x) if pd.notna(x) and isinstance(x, int) else x)
 
+# Add new columns as requested i.e. service date, full name
+adt_data_df['date_of_service'] = current_date
+oru_data_df['date_of_service'] = current_date
+adt_data_df['patient_name'] = adt_data_df['patient_last_name'] + ', ' + adt_data_df['patient_first_name'] + ' ' + adt_data_df['patient_middle_name']
+oru_data_df['patient_name'] = oru_data_df['patient_last_name'] + ', ' + oru_data_df['patient_first_name'] + ' ' + oru_data_df['patient_middle_name']
 
-# Step 4: Append the dictionary as a new row to the DataFrame
-# for message in [adt_message, oru_message]:
-#     # print(adt_message)
-#     message_df = pd.DataFrame(parseMessage(message))
-#     combined_df = pd.concat([combined_df, message_df], ignore_index=True)
-#     combined_df.to_csv('./Archive/Original/sampledata.csv', index=False)
+# Write the modified data to the output files
+adt_data_df.to_csv(f'{output_dir}/{adt_modified_filename}', index=False)
+oru_data_df.to_csv(f'{output_dir}/{oru_modified_filename}', index=False)
+orm_data_df.to_csv(f'{output_dir}/{orm_modified_filename}', index=False)
 
-# updated_sample_data_df = pd.read_csv(os.path.join(input_dir, 'sampledata.csv'))
+# If we want to drop first, last, middle name columns, use following example -->
+# *_data_df = *_data_df.drop(columns = ['patient_first_name', 'patient_last_name', 'patient_middle_name'])
 
-# Write the modified data to the output CSV files
-# adt_data_df.to_csv(os.path.join(output_dir, adt_modified_filename), index=False)
-# oru_data_df.to_csv(os.path.join(output_dir, oru_modified_filename), index=False)
-# orm_data_df.to_csv(os.path.join(output_dir, orm_modified_filename), index=False)
+#--------------------------------- CREATE A REPORT FILE.TXT, THAT LISTS TOTAL BILL AMOUNT BY STATE ---------------------------------#
 
-# Set bill_amount for patients
-# updated_sample_data_df['bill_amount'] = 1234
-
-
-# Perform the required data manipulations
-# For example, if you want to add a new column 'date_of_service' with today's date:
-# sample_data_df['date_of_service'] = today_date
-
-# Manipulate the 'patient_name' column as specified
-# sample_data_df['patient_name'] = sample_data_df['patient_last_name'] + ', ' + sample_data_df['patient_first_name'] + ' ' + sample_data_df['patient_middle_name']
-
-# Set bill_amount for patients
-# sample_data_df['bill_amount'] = 1234
-
-# sample_data_df = sample_data_df.drop(columns = ['patient_first_name', 'patient_last_name', 'patient_middle_name'])
 
 # Create a report file in txt that lists the total bill amount for each state
-# state_total_bill = sample_data_df.groupby('patient_state')['bill_amount'].sum().reset_index()
-# state_total_bill.to_csv(os.path.join(output_dir, 'state_total_bill.txt'), sep='\t', index=False)
+state_total_bill = sample_data_df.groupby('patient_state')['bill_amount'].sum().reset_index()
+state_total_bill.to_csv(f'{output_dir}/state_total_bill.txt', sep='\t', index=False)
 
 # Calculate the sum of the total bill amount and add it as a new row
-# total_sum = state_total_bill['bill_amount'].sum()
-# total_row = pd.DataFrame({'state': ['Total'], 'bill_amount': [total_sum]})
-# state_total_bill = pd.concat([state_total_bill, total_row], ignore_index=True)
+total_sum = state_total_bill['bill_amount'].sum()
+total_row = pd.DataFrame({'patient_state': ['TOTAL'], 'bill_amount': [total_sum]})
+state_total_bill = pd.concat([state_total_bill, total_row], ignore_index=True)
 
-# Write the modified data to the output CSV files
-adt_data_df.to_csv(os.path.join(output_dir, adt_modified_filename), index=False)
-oru_data_df.to_csv(os.path.join(output_dir, oru_modified_filename), index=False)
-orm_data_df.to_csv(os.path.join(output_dir, orm_modified_filename), index=False)
-# state_total_bill.to_csv(os.path.join(output_dir, bill_report), index=False)
+state_total_bill.to_csv(f'{output_dir}/state_total_bill.txt', index=False)
