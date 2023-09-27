@@ -26,13 +26,13 @@ Follow these steps to run the project:
 1. Clone this GitHub repository to your local machine:
 
     ```bash
-    git clone <repository_url>
+    git clone https://github.com/janjovellanos/vituity.git
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd vituity-edi-interview
+    cd vituity_take_home
     ```
 
 3. Run the main script:
