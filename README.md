@@ -30,7 +30,7 @@ Follow these steps to run the project:
     ```
 
 2. Navigate to the project directory:
-    ```
+    ```bash
     Copy code
     cd vituity-edi-interview
     ```
