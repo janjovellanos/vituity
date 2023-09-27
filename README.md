@@ -30,20 +30,16 @@ Follow these steps to run the project:
     ```
 
 2. Navigate to the project directory:
+
     ```bash
-    Copy code
     cd vituity-edi-interview
     ```
 
-Navigate to the project directory:
-
-bash
-Copy code
-cd vituity-edi-interview
-
 3. Run the main script:
 
-python runthis.py
+    ```bash
+    python runthis.py
+    ```
 
 ### The modified CSV files, report, and other outputs will be generated in the Archive/Modified directory.
 
