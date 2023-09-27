@@ -41,7 +41,7 @@ Follow these steps to run the project:
     python runthis.py
     ```
 
-### The modified CSV files, report, and other outputs will be generated in the Archive/Modified directory.
+The modified CSV files, report, and other outputs will be generated in the Archive/Modified directory.
 
 ## Project Details
 
