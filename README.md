@@ -46,11 +46,11 @@ Follow these steps to run the project:
     python runthis.py --input-csv ~/Desktop/sampledata.csv --input-adt ~/Desktop/ADT_sample.txt --input-oru ~/Desktop/Sample\ ORU.txt
     ```
 
-The modified CSV files, report, and other outputs will be generated in the Archive/Modified directory.
+The modified CSV files, report, and other outputs will be generated in the `Archive/Modified` directory.
 
 ## Expected Output
 
-Copying Files: The original data files have been copied to the Archive/Original directory.
+Copying Files: The original data files have been copied to the `Archive/Original` directory.
 
 Creating Modified Files: New CSV files, such as `ADT_(TodaysDate)_Modified_file.csv`, `ORU_(TodaysDate)_Modified_file.csv`, and `ORM_(TodaysDate)_Modified_file.csv`, have been generated in the `Archive/Modified` directory and have been filled with appropriate patients from `sampledata.csv`.
 
