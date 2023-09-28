@@ -67,8 +67,8 @@ adt_data_df = pd.concat([adt_data_df, pd.DataFrame(message_parser(adt_message))]
 oru_data_df = pd.concat([oru_data_df, pd.DataFrame(message_parser(oru_message))], ignore_index=True)
 
 # Manipulate incoming patient data as requested i.e. service date, full name
-adt_data_df['date_of_service'] = str(current_date)
-oru_data_df['date_of_service'] = str(current_date)
+adt_data_df['date_of_service'] = current_date
+oru_data_df['date_of_service'] = current_date
 adt_data_df['patient_name'] = adt_data_df['patient_last_name'] + ', ' + adt_data_df['patient_first_name'] + ' ' + adt_data_df['patient_middle_name']
 oru_data_df['patient_name'] = oru_data_df['patient_last_name'] + ', ' + oru_data_df['patient_first_name'] + ' ' + oru_data_df['patient_middle_name']
 

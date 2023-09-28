@@ -12,7 +12,7 @@ def message_parser(message):
         fields = segment.split('|')
         if segment.startswith('MSH|'):
             data['message_type'] = fields[8].replace('^', '-')
-            data['message_time'] = f'{fields[6][8:10]}:{fields[6][10:12]}'
+            data['message_time'] = f'{fields[6][8:10]}:{fields[6][10:12]}.0'
         elif segment.startswith('PID|'):
             data['id'] = fields[1]
             data['patient_first_name'] = fields[5].split('^')[1]
