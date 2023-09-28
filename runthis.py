@@ -9,6 +9,10 @@ from utils.helpers import message_parser
 
 #--------------------------------- COPY ALL FILES INTO /Archive/Original ---------------------------------#
 
+# Define input and output directories
+input_dir = './Archive/Original'
+output_dir = './Archive/Modified'
+
 # Create an argument parser for the command line
 parser = argparse.ArgumentParser(description='Process input files.')
 
@@ -17,14 +21,14 @@ parser.add_argument('--input-csv', required=True, help='Path to sampledata.csv')
 parser.add_argument('--input-adt', required=True, help='Path to ADT_sample.txt')
 parser.add_argument('--input-oru', required=True, help='Path to Sample ORU.txt')
 
-# Parse the command-line arguments
+# Parse incoming arguments
 args = parser.parse_args()
 
 # If Archive directory and subdirectories don't exist, create them
-if not os.path.exists('Archive/Original'):
-    os.makedirs('Archive/Original')
-if not os.path.exists('Archive/Modified'):
-    os.makedirs('Archive/Modified')
+if not os.path.exists(input_dir):
+    os.makedirs(input_dir)
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
 
 # Destination for copies
 destination_directory = os.path.join('Archive', 'Original')
@@ -38,10 +42,6 @@ for file in files_to_copy:
 
 
 #--------------------------------- WRITE OUTPUT TO MODIFIED FILES IN /Archive/Modified ---------------------------------#
-
-# Define input and output directories
-input_dir = './Archive/Original'
-output_dir = './Archive/Modified'
 
 # Get today's date
 current_date = date.today()
