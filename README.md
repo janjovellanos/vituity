@@ -15,9 +15,9 @@ The project directory is organized as follows:
 
 To run this project, you need:
 
--   `sampledata.csv`, `ADT_sample.txt`, and `Sample ORU.txt` files to be present on your computer
 -   Python (version 3.6.9+)
 -   Pandas (install via `pip install pandas`)
+-   `sampledata.csv`, `ADT_sample.txt`, and `Sample ORU.txt` files to be present on your computer
 
 ## Instructions
 
