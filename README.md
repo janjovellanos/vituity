@@ -9,17 +9,19 @@ The project directory is organized as follows:
 -   `Archive/Original`: Contains the original data files.
 -   `Archive/Modified`: Stores the modified output files.
 -   `utils`: Contains helper functions.
--   `main.py`: The main Python script for the project.
+-   `runthis.py`: The main Python script for the project.
+-   `mynotes.txt`: The project plan for the assessment.
 -   `README.md`: This documentation.
 
 ## Requirements
 
 To run this project, you need:
 
+-   This project directory (`vituity-main`) located on your Desktop
+-   sampledata.csv, ADT_sample.txt, Sample ORU.txt files located on your Desktop
 -   Python (version 3.6.9+)
 -   Pandas (install via `pip install pandas`)
 -   SQLite3 (included with Python)
--   sampledata.csv, ADT_sample.txt, Sample ORU.txt files located on your Desktop
 
 ## Instructions
 

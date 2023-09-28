@@ -15,13 +15,10 @@ csv_file = os.path.join(source_directory, 'sampledata.csv')
 adt_file = os.path.join(source_directory, 'ADT_sample.txt')
 oru_file = os.path.join(source_directory, 'Sample ORU.txt')
 
-# Check if the directory already exists
+# If Archive directory and subdirectories don't exist, create them
 if not os.path.exists('Archive/Original'):
-    # If it doesn't exist, create the directory
     os.makedirs('Archive/Original')
-    # Check if the directory already exists
 if not os.path.exists('Archive/Modified'):
-    # If it doesn't exist, create the directory
     os.makedirs('Archive/Modified')
 
 # Destination for copies
