@@ -43,7 +43,7 @@ Follow these steps to run the project:
     python runthis.py --input-csv ~/Desktop/sampledata.csv --input-adt ~/Desktop/ADT_sample.txt --input-oru ~/Desktop/Sample\ ORU.txt
     ```
 
-New files and directories will be generated in the project root directory:
+New files and directories will be generated in the project's root directory:
 
 -   `Archive/Original`: Contains the copied sample data files.
 -   `Archive/Modified`: Stores the modified CSV files and billing report.
@@ -57,7 +57,7 @@ Creating Modified Files: New CSV files, such as `ADT_(TodaysDate)_Modified_file.
 
 Data Insertion and Manipulation: Patient data has been extracted from text files and appended to the correct datasets. Additional columns, such as date_of_service and patient_name, have been added as requested.
 
-Report: A report file, state_total_bill.txt, lists the total bill amount for each state. The sum of the total bill amount is included as a new row.
+Report: A report file, `state_total_bill.txt`, lists the total bill amount for each state and the sum of the total bill amount is included as a new row.
 
 ## Bonus (Database Support)
 
