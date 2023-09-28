@@ -8,7 +8,7 @@ The project directory is organized as follows:
 
 -   `utils`: Contains helper functions.
 -   `runthis.py`: The main Python script for the project.
--   `mynotes.txt`: The project plan for the assessment.
+-   `mynotes.txt`: The project plan.
 -   `README.md`: This documentation.
 
 ## Requirements
