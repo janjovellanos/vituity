@@ -40,7 +40,6 @@ files_to_copy = [args.input_csv, args.input_adt, args.input_oru]
 for file in files_to_copy:
     shutil.copy(file, destination_directory)
 
-
 #--------------------------------- WRITE OUTPUT TO MODIFIED FILES IN /Archive/Modified ---------------------------------#
 
 # Get today's date
