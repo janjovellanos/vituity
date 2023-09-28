@@ -72,7 +72,7 @@ adt_data_df['patient_name'] = adt_data_df['patient_last_name'] + ', ' + adt_data
 oru_data_df['patient_name'] = oru_data_df['patient_last_name'] + ', ' + oru_data_df['patient_first_name'] + ' ' + oru_data_df['patient_middle_name']
 
 ## If we want to drop first, last, and middle name columns, use following lines ##
-# for df in [adt_data_df, oru_data_df, orm_data_df]:
+# for df in [adt_data_df, oru_data_df]:
 #     df.drop(columns = ['patient_first_name', 'patient_last_name', 'patient_middle_name'])
 
 # Write the modified data to the output files
