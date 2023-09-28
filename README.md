@@ -74,3 +74,55 @@ An SQLite database for all ADT patients has been created as `adt_patients.db`.
 Interact with the database by running:
 
     sqlite3 adt_patients.db
+
+Below is the schema for the `adt_patients` table used in this project:
+
+```sql
+CREATE TABLE IF NOT EXISTS "adt_patients" (
+    "index" INTEGER,
+    "#" INTEGER,
+    "id" INTEGER,
+    "site_id" TEXT,
+    "service_location" REAL,
+    "message_type" TEXT,
+    "message_time" TEXT,
+    "message_id" REAL,
+    "account_number" TEXT,
+    "discharge_disposition" TEXT,
+    "financial_class" TEXT,
+    "patient_address_1" TEXT,
+    "patient_address_2" TEXT,
+    "patient_city" TEXT,
+    "patient_state" TEXT,
+    "patient_zip" TEXT,
+    "patient_zip4" TEXT,
+    "patient_date_of_birth" TEXT,
+    "patient_deceased_date" REAL,
+    "patient_sex" TEXT,
+    "patient_ssn" REAL,
+    "referring_doctor_id" REAL,
+    "attending_doctor_id" REAL,
+    "patient_ethnicity" TEXT,
+    "patient_race" TEXT,
+    "patient_language" TEXT,
+    "patient_smoking_status" REAL,
+    "patient_email_address" TEXT,
+    "patient_cell_phone_area_code" REAL,
+    "patient_cell_phone_number" REAL,
+    "patient_marital_status" TEXT,
+    "bill_amount" INTEGER,
+    "patient_drivers_license_number" REAL,
+    "guarantor_first_name" TEXT,
+    "guarantor_last_name" TEXT,
+    "guarantor_middle_name" TEXT,
+    "guarantor_address_1" TEXT,
+    "guarantor_address_2" TEXT,
+    "guarantor_city" TEXT,
+    "guarantor_state" TEXT,
+    "guarantor_zip" TEXT,
+    "date_of_service" TEXT,
+    "patient_name" TEXT
+);
+
+CREATE INDEX "ix_adt_patients_index" ON "adt_patients" ("index");
+```
