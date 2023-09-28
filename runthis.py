@@ -6,7 +6,7 @@ import sqlite3
 import argparse
 from utils.helpers import message_parser
 
-#--------------------------------- COPY ALL FILES INTO /Archive/Original ---------------------------------#
+#--------------------------------- COPY SAMPLE FILES INTO /Archive/Original ---------------------------------#
 
 # Define input and output directories
 input_dir = './Archive/Original'
