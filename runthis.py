@@ -12,7 +12,7 @@ from utils.helpers import message_parser
 # Create an argument parser for the command line
 parser = argparse.ArgumentParser(description='Process input files.')
 
-# Add arguments for input files
+# Add arguments for input sample files
 parser.add_argument('--input-csv', required=True, help='Path to sampledata.csv')
 parser.add_argument('--input-adt', required=True, help='Path to ADT_sample.txt')
 parser.add_argument('--input-oru', required=True, help='Path to Sample ORU.txt')
