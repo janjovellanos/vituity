@@ -1,11 +1,12 @@
 -- Project Plan --
-1. Make copy of all 3 files into Original
-2. Create modified.csv files for all message types found in sampledata.csv
-3. Filter messages in sampledata.csv into correct modified.csv files
-4. Parse required data for incoming patients in ADT.txt and ORU.txt
-    4a. Initialize '#' as random int not being used by another patient
-    4b. Initilize current date and 'bill_amount' as $1234
-5. Insert new patient records into correct modified.csv files
-6. Create new columns for all records as current date and full name
-7. Make a report.txt file that lists total bill amount for each patient_state
-7a. Create a row at end of bill_amount that sums up the total bill
+1. If Archive/Original or Archive/Modified directories don't exist, create them
+2. Make copy of all 3 files into Original
+3. Create modified.csv files for all message types found in sampledata.csv
+4. Filter messages in sampledata.csv into correct modified.csv files
+5. Parse required data for incoming patients in ADT.txt and ORU.txt
+    5a. Initialize '#' as random int not being used by another patient
+    5b. Initilize current date and 'bill_amount' as $1234
+6. Insert new patient records into correct modified.csv files
+7. Create new columns for all records as current date and full name
+8. Make a report.txt file that lists total bill amount for each patient_state
+    8a. Create a row at end of bill_amount that sums up the total bill
