@@ -67,22 +67,21 @@ oru_message = open(f'{input_dir}/Sample ORU.txt', 'r').readlines()
 adt_data_df = pd.concat([adt_data_df, pd.DataFrame(message_parser(adt_message))], ignore_index=True)
 oru_data_df = pd.concat([oru_data_df, pd.DataFrame(message_parser(oru_message))], ignore_index=True)
 
-# adt_data_df.map(lambda x: int(x) if pd.notna(x) and isinstance(x, int) else x)
-# oru_data_df.map(lambda x: int(x) if pd.notna(x) and isinstance(x, int) else x)
-
 # Manipulate incoming patient data as requested i.e. service date, full name
 adt_data_df['date_of_service'] = str(current_date)
 oru_data_df['date_of_service'] = str(current_date)
 adt_data_df['patient_name'] = adt_data_df['patient_last_name'] + ', ' + adt_data_df['patient_first_name'] + ' ' + adt_data_df['patient_middle_name']
 oru_data_df['patient_name'] = oru_data_df['patient_last_name'] + ', ' + oru_data_df['patient_first_name'] + ' ' + oru_data_df['patient_middle_name']
 
+##### If we want to drop first, last, middle name columns, use following lines #####
+# for df in [adt_data_df, oru_data_df, orm_data_df]:
+#     df.drop(columns = ['patient_first_name', 'patient_last_name', 'patient_middle_name'])
+
 # Write the modified data to the output files
 adt_data_df.to_csv(f'{output_dir}/{adt_modified_filename}', index=False)
 oru_data_df.to_csv(f'{output_dir}/{oru_modified_filename}', index=False)
 orm_data_df.to_csv(f'{output_dir}/{orm_modified_filename}', index=False)
 
-##### If we want to drop first, last, middle name columns, use next line #####
-# *_data_df = *_data_df.drop(columns = ['patient_first_name', 'patient_last_name', 'patient_middle_name'])
 
 #--------------------------------- CREATE A BILLING REPORT FILE.TXT ---------------------------------#
 
@@ -95,6 +94,7 @@ total_sum = state_total_bill['bill_amount'].sum()
 total_row = pd.DataFrame({'patient_state': ['TOTAL'], 'bill_amount': [total_sum]})
 state_total_bill = pd.concat([state_total_bill, total_row], ignore_index=True)
 
+# Write billing to output file
 state_total_bill.to_csv(f'{output_dir}/state_total_bill.txt', index=False)
 
 #--------------------------------- BONUS: IMPLEMENT SQLite ---------------------------------#
