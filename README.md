@@ -32,7 +32,7 @@ Follow these steps to run the project:
 2. Navigate to the project directory:
 
     ```
-    cd vituity
+    cd vituity // if you download the .zip instead of cloning this repository replace 'vituity' with 'vituity-main'
     ```
 
 3. Run the main script, providing the paths to your sampledata.csv, ADT_sample.txt, and Sample ORU.txt files.
