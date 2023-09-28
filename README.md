@@ -48,16 +48,22 @@ Follow these steps to run the project:
 
 The modified CSV files, report, and other outputs will be generated in the Archive/Modified directory.
 
-## Project Details
+## Expected Output
 
 Copying Files: The original data files have been copied to the Archive/Original directory.
 
-Creating Modified Files: New CSV files, such as `ADT_(TodaysDate)_Modified_file.csv` and `ORU_(TodaysDate)_Modified_file.csv`, have been generated in the `Archive/Modified` directory.
+Creating Modified Files: New CSV files, such as `ADT_(TodaysDate)_Modified_file.csv`, `ORU_(TodaysDate)_Modified_file.csv`, and `ORM_(TodaysDate)_Modified_file.csv`, have been generated in the `Archive/Modified` directory and have been filled with appropriate patients from `sampledata.csv`.
 
-Data Manipulation: Patient data has been extracted from text files and appended to the appropriate datasets. Additional columns, such as date_of_service and patient_name, have been added as requested.
+Data Manipulation: Patient data has been extracted from text files and appended to the correct datasets. Additional columns, such as date_of_service and patient_name, have been added as requested.
 
 Report: A report file, state_total_bill.txt, lists the total bill amount for each state. The sum of the total bill amount is included as a new row.
 
 ## Bonus (Database Support)
 
-If you choose to implement the bonus objectives related to database support, please follow the instructions provided in the code.
+A SQLite database for all ADT patients has been created as `adt_patients.db`.
+
+Interact with the database by running:
+
+    ```bash
+    sqlite3 adt_patients.db
+    ```
