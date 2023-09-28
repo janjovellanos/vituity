@@ -57,7 +57,7 @@ adt_data_df = sample_data_df[sample_data_df['message_type'].str[:3] == 'ADT']
 oru_data_df = sample_data_df[sample_data_df['message_type'].str[:3] == 'ORU']
 orm_data_df = sample_data_df[sample_data_df['message_type'].str[:3] == 'ORM']
 
-# Extract data from the txt files
+# Convert sample messages into lists
 adt_message = open(f'{input_dir}/ADT_sample.txt', 'r').readlines()
 oru_message = open(f'{input_dir}/Sample ORU.txt', 'r').readlines()
 
