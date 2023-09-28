@@ -32,7 +32,7 @@ Follow these steps to run the project:
 2. Navigate to the project directory:
 
     ```
-    cd vituity-main
+    cd vituity
     ```
 
 3. Run the main script, providing the paths to your sampledata.csv, ADT_sample.txt, and Sample ORU.txt files.
