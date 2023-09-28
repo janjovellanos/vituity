@@ -28,13 +28,13 @@ Follow these steps to run the project:
 
 1. Clone this GitHub repository to your local machine:
 
-    ```bash
+    ```
     git clone https://github.com/janjovellanos/vituity.git
     ```
 
 2. Navigate to the project directory:
 
-    ```bash
+    ```
     cd vituity-main
     ```
 
@@ -42,7 +42,7 @@ Follow these steps to run the project:
 
     For example, if the files are located on your desktop run the script as follows:
 
-    ```bash
+    ```
     python runthis.py --input-csv ~/Desktop/sampledata.csv --input-adt ~/Desktop/ADT_sample.txt --input-oru ~/Desktop/Sample\ ORU.txt
     ```
 
@@ -64,6 +64,6 @@ A SQLite database for all ADT patients has been created as `adt_patients.db`.
 
 Interact with the database by running:
 
-    ```bash
+    ```
     sqlite3 adt_patients.db
     ```
