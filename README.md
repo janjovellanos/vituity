@@ -75,7 +75,7 @@ Interact with the database by running:
 
     sqlite3 adt_patients.db
 
-Below is the schema for the `adt_patients` table used in this project:
+Below is the schema for the `adt_patients` table:
 
 ```sql
 CREATE TABLE IF NOT EXISTS "adt_patients" (
