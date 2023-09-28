@@ -36,7 +36,7 @@ Follow these steps to run the project:
 2. Navigate to the project directory:
 
     ```bash
-    cd vituity_take_home
+    cd vituity-main
     ```
 
 3. Run the main script:
