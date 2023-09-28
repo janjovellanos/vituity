@@ -45,7 +45,7 @@ Follow these steps to run the project:
     ```
 
     This implementation of copying the files allows for flexibility in where the user may store the sample files.
-    For instance, if the files are located on your Desktop, run the script as:
+    For instance, if the files are located on your Desktop, you may run the script as:
 
     ```
     python runthis.py --input-csv ~/Desktop/sampledata.csv --input-adt ~/Desktop/ADT_sample.txt --input-oru ~/Desktop/Sample\ ORU.txt
