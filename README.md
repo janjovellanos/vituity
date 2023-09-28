@@ -46,7 +46,7 @@ Follow these steps to run the project:
 New files and directories will be generated in the project's root directory:
 
 -   `Archive/Original`: Contains the copied sample data files.
--   `Archive/Modified`: Stores the modified CSV files and billing report.
+-   `Archive/Modified`: Contains the modified CSV files and billing report.
 -   `adt_patients.db`: An SQLite database containing records of all ADT patients.
 
 ## Expected Output
