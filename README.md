@@ -6,8 +6,6 @@ Welcome to my Vituity EDI Assessment! This project demonstrates my Python progra
 
 The project directory is organized as follows:
 
--   `Archive/Original`: Contains the original data files.
--   `Archive/Modified`: Stores the modified output files.
 -   `utils`: Contains helper functions.
 -   `runthis.py`: The main Python script for the project.
 -   `mynotes.txt`: The project plan for the assessment.
@@ -17,10 +15,9 @@ The project directory is organized as follows:
 
 To run this project, you need:
 
--   `sampledata.csv`, `ADT_sample.txt`, and `Sample ORU.txt` files must be present on your computer
+-   `sampledata.csv`, `ADT_sample.txt`, and `Sample ORU.txt` files to be present on your computer
 -   Python (version 3.6.9+)
 -   Pandas (install via `pip install pandas`)
--   SQLite3 (included with Python)
 
 ## Instructions
 
@@ -46,7 +43,11 @@ Follow these steps to run the project:
     python runthis.py --input-csv ~/Desktop/sampledata.csv --input-adt ~/Desktop/ADT_sample.txt --input-oru ~/Desktop/Sample\ ORU.txt
     ```
 
-The sample files will be copied into the `Archive/Original` directory and the modified CSV files, report, and other outputs will be generated in the `Archive/Modified` directory.
+New files and directories will be generated in the project root directory:
+
+-   `Archive/Original`: Contains the copied sample data files.
+-   `Archive/Modified`: Stores the modified CSV files and billing report.
+-   `adt_patients.db`: An SQLite database containing records of all ADT patients.
 
 ## Expected Output
 
@@ -60,7 +61,7 @@ Report: A report file, state_total_bill.txt, lists the total bill amount for eac
 
 ## Bonus (Database Support)
 
-A SQLite database for all ADT patients has been created as `adt_patients.db`.
+An SQLite database for all ADT patients has been created as `adt_patients.db`.
 
 Interact with the database by running:
 
