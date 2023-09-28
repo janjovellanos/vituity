@@ -9,31 +9,7 @@ from utils.helpers import message_parser
 
 #--------------------------------- COPY ALL FILES INTO /Archive/Original ---------------------------------#
 
-# # Source path of files being used
-# source_directory = os.path.expanduser('~/Desktop')
-
-# # Define the source file paths
-# csv_file = os.path.join(source_directory, 'sampledata.csv')
-# adt_file = os.path.join(source_directory, 'ADT_sample.txt')
-# oru_file = os.path.join(source_directory, 'Sample ORU.txt')
-
-# # If Archive directory and subdirectories don't exist, create them
-# if not os.path.exists('Archive/Original'):
-#     os.makedirs('Archive/Original')
-# if not os.path.exists('Archive/Modified'):
-#     os.makedirs('Archive/Modified')
-
-# # Destination for copies
-# destination_directory = os.path.join(source_directory, 'vituity-main', 'Archive', 'Original')
-
-# # Files to copy
-# files_to_copy = [csv_file, adt_file, oru_file]
-
-# # Copy files
-# for file in files_to_copy:
-#     shutil.copy(file, destination_directory)
-
-# Create an argument parser
+# Create an argument parser for the command line
 parser = argparse.ArgumentParser(description='Process input files.')
 
 # Add arguments for input files
@@ -43,9 +19,6 @@ parser.add_argument('--input-oru', required=True, help='Path to Sample ORU.txt')
 
 # Parse the command-line arguments
 args = parser.parse_args()
-
-# Source path of files being used
-# source_directory = os.path.dirname(args.input_csv)  # Use the directory of the CSV file
 
 # If Archive directory and subdirectories don't exist, create them
 if not os.path.exists('Archive/Original'):
