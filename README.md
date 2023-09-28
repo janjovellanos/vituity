@@ -1,6 +1,6 @@
 # Vituity EDI Interview Project
 
-Welcome to my Vituity EDI Assessment! This project demonstrates my Python programming and data manipulation capabilities. In this project, I have processed patient data and generate modified CSV files, a report, and more.
+Welcome to my Vituity EDI Assessment! This project demonstrates my Python programming and data manipulation capabilities. In this project, I have processed patient data and generated modified CSV files, a report, and more.
 
 ## Project Structure
 
