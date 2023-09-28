@@ -52,10 +52,15 @@ orm_modified_filename = f"ORM_{current_date}_Modified_file.csv"
 # Create dataframe for sample data
 sample_data_df = pd.read_csv(f'{input_dir}/sampledata.csv')
 
+# Create new columns for sample patients i.e. service date, full name
+sample_data_df['date_of_service'] = current_date
+sample_data_df['patient_name'] = sample_data_df['patient_last_name'] + ', ' + sample_data_df['patient_first_name'] + ' ' + sample_data_df['patient_middle_name']
+
+
 # Create separate dataframes based on the message types i.e. ADT, ORU, ORM
-adt_data_df = sample_data_df[sample_data_df['message_type'].str[:3] == 'ADT']
-oru_data_df = sample_data_df[sample_data_df['message_type'].str[:3] == 'ORU']
-orm_data_df = sample_data_df[sample_data_df['message_type'].str[:3] == 'ORM']
+adt_data_df = pd.DataFrame(sample_data_df[sample_data_df['message_type'].str[:3] == 'ADT'])
+oru_data_df = pd.DataFrame(sample_data_df[sample_data_df['message_type'].str[:3] == 'ORU'])
+orm_data_df = pd.DataFrame(sample_data_df[sample_data_df['message_type'].str[:3] == 'ORM'])
 
 # Convert sample messages into lists
 adt_message = open(f'{input_dir}/ADT_sample.txt', 'r').readlines()
@@ -65,15 +70,9 @@ oru_message = open(f'{input_dir}/Sample ORU.txt', 'r').readlines()
 adt_data_df = pd.concat([adt_data_df, pd.DataFrame(message_parser(adt_message))], ignore_index=True)
 oru_data_df = pd.concat([oru_data_df, pd.DataFrame(message_parser(oru_message))], ignore_index=True)
 
-# Manipulate incoming patient data as requested i.e. service date, full name
-adt_data_df['date_of_service'] = current_date
-oru_data_df['date_of_service'] = current_date
-adt_data_df['patient_name'] = adt_data_df['patient_last_name'] + ', ' + adt_data_df['patient_first_name'] + ' ' + adt_data_df['patient_middle_name']
-oru_data_df['patient_name'] = oru_data_df['patient_last_name'] + ', ' + oru_data_df['patient_first_name'] + ' ' + oru_data_df['patient_middle_name']
-
-## If we want to drop first, last, and middle name columns, use following lines ##
-# for df in [adt_data_df, oru_data_df]:
-#     df.drop(columns = ['patient_first_name', 'patient_last_name', 'patient_middle_name'])
+# If we want to drop first, last, and middle name columns, use following lines. Else, comment out lines 74 and 75 ##
+for df in [adt_data_df, oru_data_df, orm_data_df]:
+    df.drop(columns = ['patient_first_name', 'patient_last_name', 'patient_middle_name'], inplace=True)
 
 # Write the modified data to the output files
 adt_data_df.to_csv(f'{output_dir}/{adt_modified_filename}', index=False)

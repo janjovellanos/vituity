@@ -1,11 +1,13 @@
 import random
+from datetime import date
 
 # Parses incoming list of lines from .txt file
 def message_parser(message):
     # Preset bill amount and random '#' value
     data = {
         'bill_amount': 1234,
-        '#': random.randint(201,999)
+        '#': random.randint(201,999),
+        'date_of_service': date.today()
     }
     # Loop through list, parse and extract fields for new record to add into output files
     for segment in message:
@@ -18,6 +20,7 @@ def message_parser(message):
             data['patient_first_name'] = fields[5].split('^')[1]
             data['patient_last_name'] = fields[5].split('^')[0]
             data['patient_middle_name'] = fields[5].split('^')[2]
+            data['patient_name'] = data['patient_last_name'] + ', ' + data['patient_first_name'] + ' ' + data['patient_middle_name']
             data['patient_address_1'] = fields[11].split('^')[0]
             data['patient_city'] = fields[11].split('^')[2]
             data['patient_state'] = fields[11].split('^')[3]
