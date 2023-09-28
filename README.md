@@ -18,7 +18,7 @@ To run this project, you need:
 
 -   Python (version 3.6.9+)
 -   Pandas (install via `pip install pandas`)
--   `sampledata.csv`, `ADT_sample.txt`, and `Sample ORU.txt` files to be present on your computer
+-   If `assets` directory is not included, `sampledata.csv`, `ADT_sample.txt`, and `Sample ORU.txt` files must be present on your local machine
 
 ## Instructions
 
