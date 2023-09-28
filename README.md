@@ -17,8 +17,7 @@ The project directory is organized as follows:
 
 To run this project, you need:
 
--   This project directory (`vituity-main`) located on your Desktop
--   sampledata.csv, ADT_sample.txt, Sample ORU.txt files located on your Desktop
+-   `sampledata.csv`, `ADT_sample.txt`, and `Sample ORU.txt` files must be present on your computer
 -   Python (version 3.6.9+)
 -   Pandas (install via `pip install pandas`)
 -   SQLite3 (included with Python)
@@ -39,10 +38,12 @@ Follow these steps to run the project:
     cd vituity-main
     ```
 
-3. Run the main script:
+3. Run the main script, providing the paths to your sampledata.csv, ADT_sample.txt, and Sample ORU.txt files.
+
+    `For example, if the files are located on your desktop run the script as follows:`
 
     ```bash
-    python runthis.py
+    python runthis.py --input-csv ~/Desktop/sampledata.csv --input-adt ~/Desktop/ADT_sample.txt --input-oru ~/Desktop/Sample\ ORU.txt
     ```
 
 The modified CSV files, report, and other outputs will be generated in the Archive/Modified directory.
