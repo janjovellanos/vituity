@@ -37,7 +37,7 @@ Follow these steps to run the project:
 
 3. Run the main script, providing the paths to your sampledata.csv, ADT_sample.txt, and Sample ORU.txt files.
 
-    For example, if the files are located on your desktop run the script as follows:
+    For example, if the files are located on your desktop, run the script as follows:
 
     ```
     python runthis.py --input-csv ~/Desktop/sampledata.csv --input-adt ~/Desktop/ADT_sample.txt --input-oru ~/Desktop/Sample\ ORU.txt
