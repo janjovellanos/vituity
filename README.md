@@ -6,7 +6,8 @@ Welcome to my Vituity EDI Assessment! This project demonstrates my Python progra
 
 The project directory is organized as follows:
 
--   `utils`: Contains helper functions.
+-   `assets`: Contains orginal files to copy.
+-   `util`: Contains parser function.
 -   `runthis.py`: The main Python script for the project.
 -   `mynotes.txt`: The project plan.
 -   `README.md`: This documentation.
@@ -37,7 +38,14 @@ Follow these steps to run the project:
 
 3. Run the main script, providing the paths to your sampledata.csv, ADT_sample.txt, and Sample ORU.txt files.
 
-    For example, if the files are located on your desktop, run the script as follows:
+    The files to copy are located in the `assets` directory. You can run the script as follows:
+
+    ```
+    python runthis.py --input-csv ./assets/sampledata.csv --input-adt ./assets/ADT_sample.txt --input-oru ./assets/Sample\ ORU.txt
+    ```
+
+    This implementation of copying the files allows for flexibility in where the user may store the sample files.
+    For instance, if the files are located on your Desktop, run the script as:
 
     ```
     python runthis.py --input-csv ~/Desktop/sampledata.csv --input-adt ~/Desktop/ADT_sample.txt --input-oru ~/Desktop/Sample\ ORU.txt
